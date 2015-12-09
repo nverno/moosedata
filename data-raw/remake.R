@@ -21,4 +21,5 @@ source('data-raw/moose_locations.R')      # remake locations.rda
 source('data-raw/split_agg_locations.R')  # remake the split location data
 
 ## Cleanup: this compresses the raw files and removes the raw versions
-comp_raw(rawfiles, compress_type)
+## comp_raw(rawfiles, compress_type)
+unlink(file.path("data-raw", rawfiles), recursive = TRUE, force=TRUE)

@@ -68,7 +68,7 @@ comp_raw <- function(rawfiles, compress_type, basedir = 'data-raw', outname='raw
 ##' @details
 ##' \describe{
 ##'   Some trouble with compression/decompression on windows, so using 7-zip.
-##'   Note: Removes the compressed archives after decompression.
+##'   Note: Removes the archives after decompression.
 ##' }
 ##' @param compfile Name of the compressed archive or rawdata (default 'rawdata.tar.bzip2')
 ##' @param basedir Name of raw data directory (default 'data-raw')
@@ -86,9 +86,9 @@ decomp_raw <- function(compfile='rawdata.tar.bzip2', basedir = 'data-raw', progr
             stop('Need to specify path to 7-zip (7z.exe) or download from "http://www.7-zip.org/"')
         args <- c('x', tarfile)
         system2(prog, args)
-        unlink(c(tarfile, compfile), recursive = TRUE, force=TRUE)
+        unlink(tarfile, recursive = TRUE, force=TRUE)
     } else {
         untar(tarfile=compfile)
-        unlink(c(tarfile, compfile), recursive = TRUE, force=TRUE)
+        unlink(tarfile, recursive = TRUE, force=TRUE)
     }
 }

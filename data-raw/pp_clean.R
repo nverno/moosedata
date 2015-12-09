@@ -12,6 +12,7 @@ pploc <- read.csv('data-raw/raw/PP_DEMSLOPE.csv')
 ##                              Permanent Plots
 ##
 ################################################################################
+
 ## tidy, wide -> long
 yrs <- c(86, 87, 98, 10)
 cols <- grep("^STAT|^DBH|^ht[0-9]+|HTTCR|bv|PPLOT|SPLOT$|^DECM|TAG$|SPEC|ASP|ELEV|BQUDX|BQUDY|CLASS$|^canht|^CPOS|YRMORT|SOILCL",
