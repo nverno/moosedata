@@ -1,7 +1,7 @@
 ##' @include utils.R
 NULL
 
-## Update data if it has been changed on AFS
+##' @title Update data if it has been changed on AFS
 ##' @importFrom sync.afs file_info process_tracker get_afs
 ##' @param compress_type Compression type to compress archives (default bzip2)
 ##' @param basedir Directory with raw data files (defaul 'data-raw')

@@ -1,6 +1,3 @@
-##' @include utils.R
-NULL
-
 ## ## Read master data file corresponding to a R data filename
 ## get_data <- function(dname) {
 ##   if (!exists("data_key"))

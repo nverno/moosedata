@@ -2,6 +2,7 @@
 % Please edit documentation in R/update_data.R
 \name{update_data}
 \alias{update_data}
+\title{Update data if it has been changed on AFS}
 \usage{
 update_data(compress_type = "bzip2", basedir = "data-raw",
   rawfiles = c("raw", afs = "afs"), oldfile = file.path(basedir,
