@@ -4,8 +4,7 @@ NULL
 .onLoad <- function(libname, pkgname) {
   pkglist <- list(
       c(name='sync.afs', url='nverno/sync.afs'),
-      c(name='dirs', url='nverno/dirs'),
-      c(name='afs', url='nverno/afs')
+      c(name='dirs', url='nverno/dirs')
   )
 
   for(pkg in pkglist)

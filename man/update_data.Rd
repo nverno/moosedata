@@ -4,7 +4,8 @@
 \alias{update_data}
 \usage{
 update_data(compress_type = "bzip2", basedir = "data-raw",
-  rawfiles = c("raw", afs = "afs"))
+  rawfiles = c("raw", afs = "afs"), oldfile = file.path(basedir,
+  paste("rawdata.tar", compress_type, sep = ".")))
 }
 \arguments{
 \item{compress_type}{Compression type to compress archives (default bzip2)}
@@ -12,5 +13,7 @@ update_data(compress_type = "bzip2", basedir = "data-raw",
 \item{basedir}{Directory with raw data files (defaul 'data-raw')}
 
 \item{rawfiles}{names of data directories to archive and compress}
+
+\item{oldfile}{name of previous compressed archive}
 }
 

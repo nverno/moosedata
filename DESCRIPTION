@@ -17,8 +17,10 @@ Suggests:
 Imports:
     devtools
 Collate:
+    'compress.R'
     'data.R'
-    'moosedata.R'
     'utils.R'
+    'get_data.R'
+    'moosedata.R'
     'update_data.R'
     'zzz.R'
