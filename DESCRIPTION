@@ -3,20 +3,22 @@ Title: Moosilauke data
 Version: 0.0.0.9000
 Authors: Noah Peart
 Description: Make some of the Moosilauke data more easily accessible.
-Depends:
+Depends: 
     R (>= 3.2.2)
 License: GPL-2
 LazyData: true
 RoxygenNote: 5.0.1
-Suggests:
+Suggests: 
     data.table (>= 1.9.6),
     haven,
     dplyr,
     xlsx,
     stringr
-Imports:
-    devtools
-Collate:
+Imports: 
+    devtools,
+    haven,
+    dplyr
+Collate: 
     'compress.R'
     'data.R'
     'get_data.R'
