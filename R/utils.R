@@ -100,4 +100,21 @@ get_data <- function(dname) {
     
 }
 
+## Create data_key data.table template
+##' @title Create template for database key from sync.afs::process_tracker()
+##' @param path path to afs directory
+##' @importFrom sync.afs get_afs process_tracker
+##' @importFrom tools file_ext
+##' @import data.table
+##' @return data.table
+##' @keywords internal
+create_data_key_template <- function(path=sync.afs::get_afs()) {
+  dat <- sync.afs::process_tracker()
+  data_key <- setDT(list(fname = dat$files,
+                         ftype = tools::file_ext(dat$files),
+                         rname = character(length(dat$files))
+                         ))
+  return( data_key[] )
+}
 
+data_key <- create_data_key_template()
