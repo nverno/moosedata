@@ -14,10 +14,7 @@ decomp_raw(compfile = "rawdata.tar.bzip2", basedir = "data-raw",
 
 \item{program}{Path to 7-zip program for Windows (default assumes on path)}
 }
-\details{
-\describe{
-  Some trouble with compression/decompression on windows, so using 7-zip.
-  Note: Removes the archives after decompression.
-}
+\description{
+Decompress files compressed with 7-zip or alternative.
 }
 

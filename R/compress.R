@@ -1,14 +1,14 @@
+## Note: Not using any of these anymore, just read files directly
+## from AFS using the sync.afs package to keep track of SAS master files.
+
+##' Compress files with 7-zip if available
 ##' @title Archive/compress raw data files
-##' @details
-##'  \describe{
-##'    7-zip supports pretty much all the types: http://www.7-zip.org/
-##'    After compression, the raw files/temporary archive are removed
-##' }
 ##' @param rawfiles The raw data files to be archived and compressed.
 ##' @param compress_type Compression type {xz, bzip, bzip2, etc}
 ##' @param basedir Name of the raw data directory (default 'data-raw')
 ##' @param outname Basename of output compressed archive (default 'rawdata')
 ##' @param program Path to 7-zip program (7z.exe) on windows (default assumes in path)
+##' @export
 comp_raw <- function(rawfiles, compress_type, basedir = 'data-raw', outname='rawdata',
                      program='7z') {
     rawfiles <- file.path(basedir, rawfiles)
@@ -31,15 +31,13 @@ comp_raw <- function(rawfiles, compress_type, basedir = 'data-raw', outname='raw
     }
 }
 
+
+##' Decompress files compressed with 7-zip or alternative.
 ##' @title Decompress/Unarchive rawdata files
-##' @details
-##' \describe{
-##'   Some trouble with compression/decompression on windows, so using 7-zip.
-##'   Note: Removes the archives after decompression.
-##' }
 ##' @param compfile Name of the compressed archive or rawdata (default 'rawdata.tar.bzip2')
 ##' @param basedir Name of raw data directory (default 'data-raw')
 ##' @param program Path to 7-zip program for Windows (default assumes on path)
+##' @export
 decomp_raw <- function(compfile='rawdata.tar.bzip2', basedir = 'data-raw', program='7z') {
     compfile <- file.path(basedir, compfile)
     tarfile <- file.path(basedir, paste(sub('([^.]+).*', '\\1',

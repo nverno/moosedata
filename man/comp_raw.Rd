@@ -18,10 +18,7 @@ comp_raw(rawfiles, compress_type, basedir = "data-raw", outname = "rawdata",
 
 \item{program}{Path to 7-zip program (7z.exe) on windows (default assumes in path)}
 }
-\details{
-\describe{
-   7-zip supports pretty much all the types: http://www.7-zip.org/
-   After compression, the raw files/temporary archive are removed
-}
+\description{
+Compress files with 7-zip if available
 }
 
