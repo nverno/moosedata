@@ -1,21 +1,20 @@
-library(dplyr)
-library(haven)
-source("R/utils.R")
+## Packages: dplyr, haven
+## Source: R/utils.R
 
-## Find data: 
-pp <- read.csv('data-raw/raw/pp.csv')
-pp_raw <- pp
-save(pp_raw, file='data/pp_raw.rda', compress=compress_type)
-pploc <- read.csv('data-raw/raw/PP_DEMSLOPE.csv')
+## Pull master files from AFS
+pp <- sync.afs::get_data('pp_raw', dkey=sync.afs::data_key)
+pp_demslope <- sync.afs::get_data('pp_demslope', dkey=sync.afs::data_key)
+
+## save(pp_raw, file='data/pp_raw.rda', compress=compress_type)
 
 ################################################################################
 ##
 ##                              Permanent Plots
 ##
 ################################################################################
-
 ## tidy, wide -> long
 yrs <- c(86, 87, 98, 10)
+
 cols <- grep("^STAT|^DBH|^ht[0-9]+|HTTCR|bv|PPLOT|SPLOT$|^DECM|TAG$|SPEC|ASP|ELEV|BQUDX|BQUDY|CLASS$|^canht|^CPOS|YRMORT|SOILCL",
              names(pp))
 dat <- pp[pp$PPLOT > 3, cols]

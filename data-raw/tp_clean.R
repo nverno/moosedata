@@ -1,6 +1,7 @@
 library(dplyr)
 source("R/utils.R")
 
+tp <- sync.afs::get_data('tp_raw')
 tp <- read.csv("data-raw/raw/transect.csv")
 tp_raw <- tp
 save(tp_raw, file='data/tp_raw.rda', compress=compress_type)

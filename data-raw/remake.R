@@ -1,18 +1,15 @@
 source('R/utils.R')
-library(dplyr)  # possible improvements on read_sas
-library(haven)  # read_sas
+source('data-raw/check_depends.R')
+
+## Required packages:
+## - list github depends under gitpkgs
+pkgs <- c("devtools", "dplyr", "haven", "data.table")
+gitpkgs <- c('nverno'='sync.afs')  # 'username'='repo'
+check_depends(packages=pkgs, gitpackages=gitpkgs)
 
 ## Check AFS connection
 if (!file.exists((path <- sync.afs::get_afs())))
   stop("Unable to reach %s", path)
-
-## Decompress the compressed archive of raw data files
-## decomp_raw()
-
-## Permanent plot data
-pp <- read_sas(file.path(path, 
-pp1 <- read_sas('data-raw/afs/pptreemas10bv.sas7bdat')
-pp2 <- read.csv('data-raw/raw/pp.csv')
 
 ## source("data-raw/pp_clean.R")             # remake pp.rda/pp_raw.rda
 
@@ -26,3 +23,4 @@ pp2 <- read.csv('data-raw/raw/pp.csv')
 ## Cleanup: this compresses the raw files and removes the raw versions
 ## comp_raw(rawfiles, compress_type)
 ## unlink(file.path("data-raw", rawfiles), recursive = TRUE, force=TRUE)
+
