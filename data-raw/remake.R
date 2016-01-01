@@ -3,7 +3,7 @@ source('data-raw/check_depends.R')
 
 ## Required packages:
 ## - list github depends under gitpkgs
-pkgs <- c("devtools", "dplyr", "haven", "data.table")
+pkgs <- c("devtools", "dplyr", "haven", "data.table", "stringi")
 gitpkgs <- c('nverno'='sync.afs')  # 'username'='repo'
 check_depends(packages=pkgs, gitpackages=gitpkgs)
 

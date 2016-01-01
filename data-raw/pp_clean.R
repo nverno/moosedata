@@ -1,4 +1,4 @@
-## Packages: dplyr, haven
+## Packages: dplyr, haven, stringi
 ## Source: R/utils.R
 
 ## Pull master files from AFS
@@ -14,10 +14,9 @@ pp_demslope <- sync.afs::get_data('pp_demslope', dkey=sync.afs::data_key)
 ################################################################################
 ## tidy, wide -> long
 yrs <- c(86, 87, 98, 10)
+cols <- grep("^STAT|^DBH|^ht[0-9]+|HTTCR|bv|PPLOT|SPLOT$|^DECM|TAG$|SPEC|ASP|ELEV|BQUDX|BQUDY|CLASS$|^canht|^CPOS|YRMORT|SOILCL", names(pp))
 
-cols <- grep("^STAT|^DBH|^ht[0-9]+|HTTCR|bv|PPLOT|SPLOT$|^DECM|TAG$|SPEC|ASP|ELEV|BQUDX|BQUDY|CLASS$|^canht|^CPOS|YRMORT|SOILCL",
-             names(pp))
-dat <- pp[pp$PPLOT > 3, cols]
+dat <- pp[PPLOT > 3, cols, with=FALSE]
 cols <- grep("[A-Za-z]+$|.*86$|.*87$|.*98$|.*10$", names(dat))
 dat <- dat[, cols]  # remove other year columns
 dat[,paste0("BA",yrs)] <- 0.00007854 * dat[,paste0("DBH", yrs)]**2
@@ -113,3 +112,6 @@ pp$PPLOT <- factor(pp$PPLOT)
 
 ## Save
 save(pp, file = "data/pp.rda", compress=compress_type)
+
+
+
