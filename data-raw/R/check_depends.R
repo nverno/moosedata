@@ -3,7 +3,7 @@
 ## Description: Check that the required packages are available to remake data.
 ## Author: Noah Peart
 ## Created: Wed Dec 30 18:10:34 2015 (-0500)
-## Last-Updated: Thu Dec 31 02:18:02 2015 (-0500)
+## Last-Updated: Sun Jan  3 18:55:55 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 
@@ -13,8 +13,9 @@
 ##' @param packages Packages available through install.packages
 ##' @param gitpackages Packages on github
 ##' @param auto_install If not interactive, logical to install packages (default to TRUE).
+##' @param load Load the packages (default FALSE)
 ##' @return TRUE invisibly
-check_depends <- function(packages, gitpackages, auto_install=TRUE) {
+check_depends <- function(packages, gitpackages, auto_install=TRUE, load=FALSE) {
   pkgs <- if (missing(packages)) list() else packages
   gitpkgs <- if (missing(gitpackages)) NULL else gitpackages
   found_pkgs <- unlist(lapply(pkgs, requireNamespace, quietly=TRUE))
@@ -62,6 +63,7 @@ check_depends <- function(packages, gitpackages, auto_install=TRUE) {
       stop('Can\'t continue without required packages.')
     }
   }
+  if (load) lapply(c(pkgs, unname(gitpkgs)), require, quietly=TRUE, character.only=TRUE)
   invisible(TRUE)
 }
 

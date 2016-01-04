@@ -1,15 +1,16 @@
 source('R/utils.R')
-source('data-raw/check_depends.R')
+source('data-raw/R/check_depends.R')
 
 ## Required packages:
 ## - list github depends under gitpkgs
-pkgs <- c("devtools", "dplyr", "haven", "data.table", "stringi")
+pkgs <- c("devtools", "dplyr", "haven", "data.table", "stringi", "readxl")
 gitpkgs <- c('nverno'='sync.afs')  # 'username'='repo'
 check_depends(packages=pkgs, gitpackages=gitpkgs)
 
 ## Check AFS connection
-if (!file.exists((path <- sync.afs::get_afs())))
-  stop("Unable to reach %s", path)
+connected <- sync.afs::check_afs()
+if (!connected) stop("Unable to reach AFS")
+path <- sync.afs::get_afs()
 
 ## source("data-raw/pp_clean.R")             # remake pp.rda/pp_raw.rda
 
