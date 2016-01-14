@@ -4,7 +4,8 @@ source('data-raw/R/check_depends.R')
 ## Required packages:
 ## - list github depends under gitpkgs
 pkgs <- c("devtools", "dplyr", "haven", "data.table", "stringi", "readxl")
-gitpkgs <- c('nverno'='sync.afs')  # 'username'='repo'
+gitpkgs <- c('nverno'='sync.afs', 
+             'leeper'='rio')  # 'username'='repo'
 check_depends(packages=pkgs, gitpackages=gitpkgs)
 
 ## Check AFS connection

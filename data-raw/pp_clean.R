@@ -2,8 +2,9 @@
 ## Source: R/utils.R
 
 ## Pull master files from AFS
-pp <- sync.afs::get_data('pp_raw', dkey=sync.afs::data_key)
-pp_demslope <- sync.afs::get_data('pp_demslope', dkey=sync.afs::data_key)
+pp <- sync.afs::get_data('pp_raw', path=sync.afs::get_afs(), dkey=sync.afs::data_key)
+pp_demslope <- sync.afs::get_data('pp_demslope', path=sync.afs::get_afs(),
+                                  dkey=sync.afs::data_key)
 
 ## save(pp_raw, file='data/pp_raw.rda', compress=compress_type)
 
@@ -12,6 +13,40 @@ pp_demslope <- sync.afs::get_data('pp_demslope', dkey=sync.afs::data_key)
 ##                              Permanent Plots
 ##
 ################################################################################
+## Columns
+names(pp) <- toupper(names(pp))
+names(pp_demslope) <- toupper(names(pp_demslope))
+
+## Ignored
+ignored <- c('DECW[0-9]+', 'CLITOP[0-9]+', 'WD89OL', 'WD89AV', 'EXWI89', 'LVBD89',
+             'TOTHT[0-9]+', 'HTBCR[0-9]+', 'COND[0-9]+', 'SNHT[0-9]+', 'DECAY[0-9]+',
+             'AOL[0-9]+', 'SNAZ[0-9]+', 'WD[0-9]+', 'ICE[0-9]+', 'DATE[0-9]+',
+             'NOTE[0-9]+', 'DAH[0-9]+', 'LAND', 'MICR', 'BQCRDX', 'BQCRDY',
+             'CLASS[0-9]+', 'EX[0-9]+', 'OUT', 'CQUDX[0-9]+', 'CQUDY[0-9]+',
+             'CQCRDX[0-9]+', 'FLAG', 'CODE[0-9]+A', 'CENSUS[0-9]+', 'HERB[0-9_]+',
+             'DECAY', 'DSAPP[0-9]+', 'DSAPA[0-9]+', 'DSAPB[0-9]+', 'TAGOLD',
+             'PISAP[0-9]+', 'HRB[0-9_]+', 'SHRB[0-9_]+', 'SPLOT[0-9]+',
+             'SPCRT', 'MDBH[0-9]+')
+
+## 86/87 crown dimensions
+crown_dims <- c('CRHT(86|87)'='numeric', 'CLONG(86|87)'='numeric', 'CAZLNG(86|87)'='numeric', 
+                'CPERP(86|87)'='numeric')
+
+## defaults
+keepers <- c('PPLOT'='integer', 'SPLOT'='integer', 'TAG'='character', 'SPEC'='factor', 
+             'CLASS'='factor', 'YRTAG'='integer', 'YRMORT'='integer',
+             'CSAP[0-9]+'='factor', 'STAT[0-9]+'='factor', 
+             'DBH[0-9]+'='numeric', 'DECM[0-9]+'='integer',
+             'HTTCR[0-9]+'='numeric', 'CPOS[0-9]+'='factor', '^HT[0-9]+'='numeric',
+             'CII[0-9]+'='integer', 'ELEV'='integer', 'ELEVCL'='factor',
+             'ASPCL'='factor', 'ASP'='integer', 'SOILCL'='factor',
+             'SLOPE8687'='integer', 'SLOPCL'='factor', 'BQUDX'='integer',
+             'BQUDY'='integer', 'BPCRDX'='numeric', 'BPCRDY'='numeric')
+             
+             
+             
+             
+
 ## tidy, wide -> long
 yrs <- c(86, 87, 98, 10)
 cols <- grep("^STAT|^DBH|^ht[0-9]+|HTTCR|bv|PPLOT|SPLOT$|^DECM|TAG$|SPEC|ASP|ELEV|BQUDX|BQUDY|CLASS$|^canht|^CPOS|YRMORT|SOILCL", names(pp))
