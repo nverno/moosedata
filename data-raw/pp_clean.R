@@ -42,10 +42,6 @@ keepers <- c('PPLOT'='integer', 'SPLOT'='integer', 'TAG'='character', 'SPEC'='fa
              'ASPCL'='factor', 'ASP'='integer', 'SOILCL'='factor',
              'SLOPE8687'='integer', 'SLOPCL'='factor', 'BQUDX'='integer',
              'BQUDY'='integer', 'BPCRDX'='numeric', 'BPCRDY'='numeric')
-             
-             
-             
-             
 
 ## tidy, wide -> long
 yrs <- c(86, 87, 98, 10)

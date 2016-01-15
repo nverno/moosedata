@@ -3,7 +3,7 @@
 ## Description: Convert columns to specified types
 ## Author: Noah Peart
 ## Created: Thu Jan 14 01:16:55 2016 (-0500)
-## Last-Updated: Thu Jan 14 01:47:00 2016 (-0500)
+## Last-Updated: Thu Jan 14 19:40:19 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 
@@ -22,13 +22,25 @@ get_columns <- function(cols, data) {
 }
 
 convert_columns <- function(cols, data, check=TRUE) {
+    non_factors <- cols[as.vector(cols) != 'factor']
+    factors <- cols[!(cols %in% non_factors)]
+    if (check) pp1 <- copy(pp)
+
+    ## Convert non-factor columns
+    pp[, names(non_factors) := mapply(function(col, type) 
+        as(get(col), type), names(non_factors), as.vector(non_factors))]
+    
     if (check) {
-        non_factors <- cols[as.vector(cols) != 'factor']
-        res <- pp[, mapply(function(col, type) 
+        res1 <- pp[, mapply(function(col, type) 
             all(as(get(col), type) == get(col), na.rm=TRUE), 
             names(non_factors), as.vector(non_factors))]
+        res2 <- pp[, mapply(function(col, type) 
+            all(as(get(col), type) == get(col), na.rm=TRUE), 
+            names(factors), 'factor')]
         if (sum(!res) > 0) 
             stop(sprintf('Columns failed conversion check: %s',
                          paste(names(non_factors[res]))))
     }
 }
+
+
