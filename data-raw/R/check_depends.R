@@ -3,7 +3,7 @@
 ## Description: Check that the required packages are available to remake data.
 ## Author: Noah Peart
 ## Created: Wed Dec 30 18:10:34 2015 (-0500)
-## Last-Updated: Sun Jan  3 18:55:55 2016 (-0500)
+## Last-Updated: Fri Jan 15 22:22:08 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 
@@ -14,6 +14,7 @@
 ##' @param gitpackages Packages on github
 ##' @param auto_install If not interactive, logical to install packages (default to TRUE).
 ##' @param load Load the packages (default FALSE)
+##' @import devtools
 ##' @return TRUE invisibly
 check_depends <- function(packages, gitpackages, auto_install=TRUE, load=FALSE) {
   pkgs <- if (missing(packages)) list() else packages

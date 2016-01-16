@@ -9,8 +9,8 @@ Depends:
 License: GPL-2
 LazyData: true
 RoxygenNote: 5.0.1
-Imports: 
-    stringr
+Imports:
+	stringi
 Collate: 
     'compress.R'
     'data.R'

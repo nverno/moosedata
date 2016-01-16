@@ -29,19 +29,19 @@ ignored <- c('DECW[0-9]+', 'CLITOP[0-9]+', 'WD89OL', 'WD89AV', 'EXWI89', 'LVBD89
              'SPCRT', 'MDBH[0-9]+')
 
 ## 86/87 crown dimensions
-crown_dims <- c('CRHT(86|87)'='numeric', 'CLONG(86|87)'='numeric', 'CAZLNG(86|87)'='numeric', 
-                'CPERP(86|87)'='numeric')
+crown_dims <- c('CRHT(86|87)'='double', 'CLONG(86|87)'='double', 'CAZLNG(86|87)'='double', 
+                'CPERP(86|87)'='double')
 
 ## defaults
 keepers <- c('PPLOT'='integer', 'SPLOT'='integer', 'TAG'='character', 'SPEC'='factor', 
              'CLASS'='factor', 'YRTAG'='integer', 'YRMORT'='integer',
              'CSAP[0-9]+'='factor', 'STAT[0-9]+'='factor', 
-             'DBH[0-9]+'='numeric', 'DECM[0-9]+'='integer',
-             'HTTCR[0-9]+'='numeric', 'CPOS[0-9]+'='factor', '^HT[0-9]+'='numeric',
+             'DBH[0-9]+'='double', 'DECM[0-9]+'='integer',
+             'HTTCR[0-9]+'='double', 'CPOS[0-9]+'='factor', '^HT[0-9]+'='double',
              'CII[0-9]+'='integer', 'ELEV'='integer', 'ELEVCL'='factor',
              'ASPCL'='factor', 'ASP'='integer', 'SOILCL'='factor',
              'SLOPE8687'='integer', 'SLOPCL'='factor', 'BQUDX'='integer',
-             'BQUDY'='integer', 'BPCRDX'='numeric', 'BPCRDY'='numeric')
+             'BQUDY'='integer', 'BPCRDX'='double', 'BPCRDY'='double')
 
 ## tidy, wide -> long
 yrs <- c(86, 87, 98, 10)

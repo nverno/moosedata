@@ -1,5 +1,4 @@
-source('R/utils.R')
-source('data-raw/R/check_depends.R')
+source('data-raw/R/check_depends.R')  # uses devtools to install from github
 
 ## Required packages:
 ## - list github depends under gitpkgs
@@ -7,6 +6,9 @@ pkgs <- c("devtools", "dplyr", "haven", "data.table", "stringi", "readxl")
 gitpkgs <- c('nverno'='sync.afs', 
              'leeper'='rio')  # 'username'='repo'
 check_depends(packages=pkgs, gitpackages=gitpkgs)
+
+## may use some packages (ie. stringi)
+source('data-raw/R/utils.R')
 
 ## Check AFS connection
 connected <- sync.afs::check_afs()
