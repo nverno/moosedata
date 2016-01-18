@@ -14,8 +14,8 @@ pp_demslope <- sync.afs::get_data('pp_demslope', path=sync.afs::get_afs(),
 ##
 ################################################################################
 ## Columns
-names(pp) <- toupper(names(pp))
-names(pp_demslope) <- toupper(names(pp_demslope))
+setnames(pp, names(pp), toupper(names(pp)))
+setnames(pp_demslope, names(pp_demslope), toupper(names(pp_demslope)))
 
 ## Ignored
 ignored <- c('DECW[0-9]+', 'CLITOP[0-9]+', 'WD89OL', 'WD89AV', 'EXWI89', 'LVBD89',
