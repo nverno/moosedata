@@ -9,13 +9,11 @@ Depends:
 License: GPL-2
 LazyData: true
 RoxygenNote: 5.0.1
-Imports:
-	stringi
+Imports: 
 Collate: 
-    'compress.R'
     'data.R'
     'moosedata.R'
-    'utils.R'
 Suggests: haven,
     dplyr,
-    data.table (>= 1.9.6)
+    data.table (>= 1.9.6),
+    stringi

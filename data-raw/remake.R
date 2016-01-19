@@ -15,6 +15,8 @@ connected <- sync.afs::check_afs()
 if (!connected) stop("Unable to reach AFS")
 path <- sync.afs::get_afs()
 
+compress_type <- 'xz'
+
 ## source("data-raw/pp_clean.R")             # remake pp.rda/pp_raw.rda
 
 ## Transect data
@@ -23,8 +25,3 @@ path <- sync.afs::get_afs()
 ## Location data
 ## source('data-raw/moose_locations.R')      # remake locations.rda
 ## source('data-raw/split_agg_locations.R')  # remake the split location data
-
-## Cleanup: this compresses the raw files and removes the raw versions
-## comp_raw(rawfiles, compress_type)
-## unlink(file.path("data-raw", rawfiles), recursive = TRUE, force=TRUE)
-

@@ -2,11 +2,17 @@
 ## Source: R/utils.R
 
 ## Pull master files from AFS
-pp <- sync.afs::get_data('pp_raw', path=sync.afs::get_afs(), dkey=sync.afs::data_key)
-pp_demslope <- sync.afs::get_data('pp_demslope', path=sync.afs::get_afs(),
-                                  dkey=sync.afs::data_key)
+dkey <- copy(sync.afs::data_key)
+path <- sync.afs::get_afs()
+pp <- sync.afs::get_data('pp_raw', path, dkey)
+pp_demslope <- sync.afs::get_data('pp_demslope', path, dkey)
 
+## Save raw files?
 ## save(pp_raw, file='data/pp_raw.rda', compress=compress_type)
+## save(pp_demslope, file='data/pp_demslope.rda, compress=compress_type)
+
+## Helper files
+source('data-raw/R/convert_columns.R')
 
 ################################################################################
 ##
@@ -26,7 +32,7 @@ ignored <- c('DECW[0-9]+', 'CLITOP[0-9]+', 'WD89OL', 'WD89AV', 'EXWI89', 'LVBD89
              'CQCRDX[0-9]+', 'FLAG', 'CODE[0-9]+A', 'CENSUS[0-9]+', 'HERB[0-9_]+',
              'DECAY', 'DSAPP[0-9]+', 'DSAPA[0-9]+', 'DSAPB[0-9]+', 'TAGOLD',
              'PISAP[0-9]+', 'HRB[0-9_]+', 'SHRB[0-9_]+', 'SPLOT[0-9]+',
-             'SPCRT', 'MDBH[0-9]+')
+             'SPCRT', 'MDBH[0-9]+', 'BPCRDX'='double', 'BPCRDY'='double')
 
 ## 86/87 crown dimensions
 crown_dims <- c('CRHT(86|87)'='double', 'CLONG(86|87)'='double', 'CAZLNG(86|87)'='double', 
@@ -41,7 +47,7 @@ keepers <- c('PPLOT'='integer', 'SPLOT'='integer', 'TAG'='character', 'SPEC'='fa
              'CII[0-9]+'='integer', 'ELEV'='integer', 'ELEVCL'='factor',
              'ASPCL'='factor', 'ASP'='integer', 'SOILCL'='factor',
              'SLOPE8687'='integer', 'SLOPCL'='factor', 'BQUDX'='integer',
-             'BQUDY'='integer', 'BPCRDX'='double', 'BPCRDY'='double')
+             'BQUDY'='integer')
 
 ## tidy, wide -> long
 yrs <- c(86, 87, 98, 10)

@@ -3,6 +3,8 @@
 
 [[file:data_key.org][Table]] of afs master data locations.
 
+Ignore slopes until we know if they are percents or angles.
+
 * Datasets
   - abba15ex are just a few extension growths collected this year.
   - birchmas* are destructive files
