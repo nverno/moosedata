@@ -1,24 +1,33 @@
-## Packages: dplyr, haven, stringi
-## Source: R/utils.R
+## Packages: data.table, stringi, nverno/sync.afs
+## Tests: ../testthat/tests/test-pp_raw.R
+## Variables:
+## - compress_type: compression to use to save data
+## - path: path to AFS root directory
+## - dkey: data key linking R files to master files
+## - save_raw: if TRUE, then save raw master files
 
 ## Pull master files from AFS
-dkey <- copy(sync.afs::data_key)
-path <- sync.afs::get_afs()
-pp <- sync.afs::get_data('pp_raw', path, dkey)
+if (!exists('dkey')) dkey <- copy(sync.afs::data_key)
+if (!exists('path')) path <- sync.afs::get_afs()
+pp_raw <- sync.afs::get_data('pp_raw', path, dkey)
 pp_demslope <- sync.afs::get_data('pp_demslope', path, dkey)
 
 ## Save raw files?
-## save(pp_raw, file='data/pp_raw.rda', compress=compress_type)
-## save(pp_demslope, file='data/pp_demslope.rda, compress=compress_type)
+if (exists('save_raw') && save_raw) {
+    save(pp_raw, file='data/pp_raw.rda', compress=compress_type)
+    save(pp_demslope, file='data/pp_demslope.rda, compress=compress_type')
+}
 
 ## Helper files
-source('data-raw/R/convert_columns.R')
+source('data-raw/R/convert_columns.R', chdir=TRUE)
 
 ################################################################################
 ##
 ##                              Permanent Plots
 ##
 ################################################################################
+pp <- copy(pp_raw)
+
 ## Columns
 setnames(pp, names(pp), toupper(names(pp)))
 setnames(pp_demslope, names(pp_demslope), toupper(names(pp_demslope)))
@@ -39,46 +48,89 @@ crown_dims <- c('CRHT(86|87)'='double', 'CLONG(86|87)'='double', 'CAZLNG(86|87)'
                 'CPERP(86|87)'='double')
 
 ## defaults
-keepers <- c('PPLOT'='integer', 'SPLOT'='integer', 'TAG'='character', 'SPEC'='factor', 
-             'CLASS'='factor', 'YRTAG'='integer', 'YRMORT'='integer',
-             'CSAP[0-9]+'='factor', 'STAT[0-9]+'='factor', 
-             'DBH[0-9]+'='double', 'DECM[0-9]+'='integer',
-             'HTTCR[0-9]+'='double', 'CPOS[0-9]+'='factor', '^HT[0-9]+'='double',
-             'CII[0-9]+'='integer', 'ELEV'='integer', 'ELEVCL'='factor',
-             'ASPCL'='factor', 'ASP'='integer', 'SOILCL'='factor',
-             'SLOPE8687'='integer', 'SLOPCL'='factor', 'BQUDX'='integer',
-             'BQUDY'='integer')
+keepers <- c(
+    ## *** Plot/subplot level variables ***
+    'PPLOT'='integer',
+    'SPLOT'='integer',
+    'ELEV'='integer',
+    'ELEVCL'='factor',
+    'ASPCL'='factor',
+    'ASP'='integer',
+    'SOILCL'='factor',
+    'SLOPE8687'='integer',
+    'SLOPCL'='factor',
+    ## *** Individual variables ***
+    'TAG'='character',
+    'SPEC'='factor', 
+    'CLASS'='factor',
+    'YRTAG'='integer',
+    'YRMORT'='integer',
+    'CSAP[0-9]+'='factor',
+    'STAT[0-9]+'='factor', 
+    'DBH[0-9]+'='double',
+    'EBV[0-9]+'='double',   # estimated bole volumes
+    'EHT[0-9]+'='integer',  # indicates estimated height
+    'DECM[0-9]+'='integer',
+    'HTTCR[0-9]+'='double',
+    'CPOS[0-9]+'='factor',
+    'HT[0-9]+'='double',
+    'CII[0-9]+'='integer', 
+    'BQUDX'='integer',
+    'BQUDY'='integer'
+)
+
+## *** NOTES ***
+## - remove 0 DBHS
+## - CSAP is 'Y' in PPLOT/SPLOT/SPEC combinations where saplings were sampled
+## Check:
+## pp[ CLASS=='P', sum(CSAP8788 == 'Y')>0 & sum(CSAP8788 == 'N')>0,
+##    by=c('PPLOT', 'SPLOT', 'SPEC')][, sum(V1) ]
+
+
+## Trim extra columns and convert (not factors until after wide->long)
+trim_data(keepers, pp)
+convert_columns(keepers, pp)
+
+## Slope column?
+## For now, just remove year identifiers
+setnames(pp, 'SLOPE8687', 'SLOPE')
+
+## Reshape to long
+tst <- dcast(pp, )
 
 ## tidy, wide -> long
-yrs <- c(86, 87, 98, 10)
-cols <- grep("^STAT|^DBH|^ht[0-9]+|HTTCR|bv|PPLOT|SPLOT$|^DECM|TAG$|SPEC|ASP|ELEV|BQUDX|BQUDY|CLASS$|^canht|^CPOS|YRMORT|SOILCL", names(pp))
+## yrs <- c(86, 87, 98, 10)
+## cols <- grep("^STAT|^DBH|^ht[0-9]+|HTTCR|bv|PPLOT|SPLOT$|^DECM|TAG$|SPEC|ASP|ELEV|BQUDX|BQUDY|CLASS$|^canht|^CPOS|YRMORT|SOILCL", names(pp))
 
-dat <- pp[PPLOT > 3, cols, with=FALSE]
-cols <- grep("[A-Za-z]+$|.*86$|.*87$|.*98$|.*10$", names(dat))
-dat <- dat[, cols]  # remove other year columns
-dat[,paste0("BA",yrs)] <- 0.00007854 * dat[,paste0("DBH", yrs)]**2
+## Remove plots 1:3, keep only certain years
+## dat <- pp[PPLOT > 3, cols, with=FALSE]
+## cols <- grep("[A-Za-z]+$|.*86$|.*87$|.*98$|.*10$", names(dat))
+## dat <- dat[, cols]  # remove other year columns
+
+## Basal area
+## dat[,paste0("BA", yrs)] <- 0.00007854 * dat[, paste0("DBH", yrs)]**2
 
 ## Growth columns
-vars <- c("DBH", "ht", "bv", "canht", "HTTCR", "BA")
-for (v in vars) {
-    dat[,paste0("g_", v, 86)] <- (dat[,paste0(v, 98)] - dat[,paste0(v, 86)])/12
-    dat[,paste0("g_", v, 87)] <- (dat[,paste0(v, 98)] - dat[,paste0(v, 87)])/11
-    dat[,paste0("g_", v, 98)] <- (dat[,paste0(v, 10)] - dat[,paste0(v, 98)])/12
-}
+## vars <- c("DBH", "ht", "bv", "canht", "HTTCR", "BA")
+## for (v in vars) {
+##     dat[,paste0("g_", v, 86)] <- (dat[,paste0(v, 98)] - dat[,paste0(v, 86)])/12
+##     dat[,paste0("g_", v, 87)] <- (dat[,paste0(v, 98)] - dat[,paste0(v, 87)])/11
+##     dat[,paste0("g_", v, 98)] <- (dat[,paste0(v, 10)] - dat[,paste0(v, 98)])/12
+## }
 
 ## Prior growth columns
-for (v in vars) {
-    dat[,paste0("pg_", v, 98)] <- (dat[,paste0(v, 98)] - dat[,paste0(v, 86)])/12
-    inds <- !is.na(dat[,paste0(v, 87)]) & !is.na(dat[,paste0(v, 98)])
-    dat[inds, paste0("pg_", v, 98)] <- (dat[inds, paste0(v, 98)] - dat[inds, paste0(v, 87)])/11
-    dat[,paste0("pg_", v, 10)] <- (dat[,paste0(v, 10)] - dat[,paste0(v, 98)])/12
-}
+## for (v in vars) {
+##     dat[,paste0("pg_", v, 98)] <- (dat[,paste0(v, 98)] - dat[,paste0(v, 86)])/12
+##     inds <- !is.na(dat[,paste0(v, 87)]) & !is.na(dat[,paste0(v, 98)])
+##     dat[inds, paste0("pg_", v, 98)] <- (dat[inds, paste0(v, 98)] - dat[inds, paste0(v, 87)])/11
+##     dat[,paste0("pg_", v, 10)] <- (dat[,paste0(v, 10)] - dat[,paste0(v, 98)])/12
+## }
 
 ## Trees that died/aren't in next census period
-dat[,"DIED86"] <- ifelse(dat[,"STAT86"] == "ALIVE" & dat[,"STAT98"] != "ALIVE", 1, 0)
-dat[,"DIED87"] <- ifelse(dat[,"STAT87"] == "ALIVE" & dat[,"STAT98"] != "ALIVE", 1, 0)
-dat[,"DIED98"] <- ifelse(dat[,"STAT98"] == "ALIVE" & dat[,"STAT10"] != "ALIVE", 1, 0)
-dat[,"DIED10"] <- NA
+## dat[,"DIED86"] <- ifelse(dat[,"STAT86"] == "ALIVE" & dat[,"STAT98"] != "ALIVE", 1, 0)
+## dat[,"DIED87"] <- ifelse(dat[,"STAT87"] == "ALIVE" & dat[,"STAT98"] != "ALIVE", 1, 0)
+## dat[,"DIED98"] <- ifelse(dat[,"STAT98"] == "ALIVE" & dat[,"STAT10"] != "ALIVE", 1, 0)
+## dat[,"DIED10"] <- NA
 
 ## Trees that were actually reported dead
 died <- c("DEAD", "PD")  # identifies for dead
