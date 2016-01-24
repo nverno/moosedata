@@ -28,7 +28,6 @@
 ##'   \item CLASS: Type of sampling location:
 ##'      \item P: Permanent Plot
 ##'      \item : Permanent Plot
-
 ##' }
 "pp"
 

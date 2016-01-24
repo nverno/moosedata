@@ -1,22 +1,15 @@
 ## Packages: data.table, stringi, nverno/sync.afs
-## Tests: ../testthat/tests/test-pp_raw.R
+## Tests: ../testthat/tests/test-pp.R
 ## Variables:
 ## - compress_type: compression to use to save data
 ## - path: path to AFS root directory
 ## - dkey: data key linking R files to master files
-## - save_raw: if TRUE, then save raw master files
 
 ## Pull master files from AFS
 if (!exists('dkey')) dkey <- copy(sync.afs::data_key)
 if (!exists('path')) path <- sync.afs::get_afs()
 pp_raw <- sync.afs::get_data('pp_raw', path, dkey)
 pp_demslope <- sync.afs::get_data('pp_demslope', path, dkey)
-
-## Save raw files?
-if (exists('save_raw') && save_raw) {
-    save(pp_raw, file='data/pp_raw.rda', compress=compress_type)
-    save(pp_demslope, file='data/pp_demslope.rda, compress=compress_type')
-}
 
 ## Helper files
 source('data-raw/R/convert_columns.R', chdir=TRUE)

@@ -5,15 +5,15 @@ Author: Noah Peart
 Maintainer: Noah Peart <noah.v.peart@gmail.com>
 Description: Make some of the Moosilauke data more easily accessible.
 Depends: 
-    R (>= 3.2.2)
+    R (>= 3.2.0)
 License: GPL-2
 LazyData: true
 RoxygenNote: 5.0.1
 Imports: 
 Collate: 
     'data.R'
+    'pp_raw.R'
     'moosedata.R'
-Suggests: haven,
-    dplyr,
-    data.table (>= 1.9.6),
-    stringi
+Suggests:
+    data.table (>= 1.9.7)
+
