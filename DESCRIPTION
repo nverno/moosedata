@@ -13,7 +13,27 @@ Imports:
 Collate: 
     'data.R'
     'pp_raw.R'
+    'tp_raw.R'
+    'abba15ex_raw.R'
+    'pp_demslope.R'
     'moosedata.R'
+    'birchmash_raw.R'
+    'birchmasv_raw.R'
+    'demomas11_raw.R'
+    'elevmas12_raw.R'
+    'firmash_raw.R'
+    'firmasv_raw.R'
+    'hhcht15mas_raw.R'
+    'hhtr15ht_raw.R'
+    'ppsubmas10c_raw.R'
+    'pptreemas10_raw.R'
+    'prismmas12_raw.R'
+    'seesapmas11_raw.R'
+    'soilmas11_raw.R'
+    'trsaptrmas11_raw.R'
+    'trseedmas11_raw.R'
+   'trspcovmas11_raw.R'
+   'trsubmas11c_raw.R'
 Suggests:
     data.table (>= 1.9.7)
 

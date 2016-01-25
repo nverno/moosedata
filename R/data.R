@@ -31,21 +31,6 @@
 ##' }
 "pp"
 
-##' Transect plot data in raw format (wide).
-##'
-##' A dataset containing tree data collected from the 80's to
-##' until most recently in 2011.
-##'
-##' @format A data frame with 7648 rows and 115 variables.
-##' \itemize{
-##'   \item TRAN: Transect name
-##'   \item TPLOT:  Transect plot number (increasing numbers with elevation)
-##'   \item TAG: Tree tag number
-##'   \item SPEC: Tree species abbreviation
-##'   \item YRTAG: Year the tree was tagged
-##' }
-"tp_raw"
-
 ##' Transect plot data in long format.
 ##'
 ##' A dataset containing tree data collected from the 80's to

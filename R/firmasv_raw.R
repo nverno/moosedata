@@ -1,0 +1,60 @@
+##' firmasv_raw
+##'
+##' @format An object of class \code{data.table} (inherits from
+##'   \code{data.frame}) with 8401 rows and 29 columns.
+##' \itemize {
+##'     \item TRANID: "character" with 10 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrr}{
+##'     \strong{""} \tab \strong{E320} \tab \strong{E330} \tab \strong{E334} \tab \strong{E335} \tab \strong{S344} \tab \strong{W32} \tab \strong{W46} \tab \strong{W60} \tab \strong{W70}\cr
+##'     85 \tab 981 \tab 749 \tab 1016 \tab 658 \tab 1079 \tab 841 \tab 800 \tab 1078 \tab 1114
+##'     }
+##'     \item PLOT: "double" variable with 10 unique values in the range [16, 24], 85 NA values.
+##'     \item DISK: "double" variable with 219 unique values in the range [1, 443], 3498 NA values.
+##'     \item TRAKCORE: "double" variable with 78 unique values in the range [2.1, 82.2], 4903 NA values.
+##'     \item SPECIES: "character" with 2 unique values and 0 NA values.
+##'     \tabular{rr}{
+##'     \strong{""} \tab \strong{ABBA}\cr
+##'     85 \tab 8316
+##'     }
+##'     \item CII: "double" variable with 8 unique values in the range [1, 5], 753 NA values.
+##'     \item DAH1: "double" variable with 213 unique values in the range [0.04, 25.5], 85 NA values.
+##'     \item DAH2: "double" variable with 160 unique values in the range [0.03, 8.5], 3997 NA values.
+##'     \item DBH1: "double" variable with 93 unique values in the range [0.29, 20.9], 3189 NA values.
+##'     \item DBH2: "double" variable with 43 unique values in the range [0, 4.66], 6747 NA values.
+##'     \item HT99: "double" variable with 183 unique values in the range [3, 865], 149 NA values.
+##'     \item SUB: "character" with 8 unique values and 0 NA values.
+##'     \tabular{rrrrrrrr}{
+##'     \strong{""} \tab \strong{1} \tab \strong{2} \tab \strong{3} \tab \strong{CON LITT} \tab \strong{LITTER} \tab \strong{MIXED LI} \tab \strong{MOSS}\cr
+##'     4691 \tab 72 \tab 23 \tab 47 \tab 1427 \tab 187 \tab 54 \tab 1900
+##'     }
+##'     \item ON: "character" with 5 unique values and 0 NA values.
+##'     \tabular{rrrrr}{
+##'     \strong{""} \tab \strong{DEAD WOO} \tab \strong{LIVE WOO} \tab \strong{ROCK} \tab \strong{TIPUP}\cr
+##'     8091 \tab 59 \tab 65 \tab 174 \tab 12
+##'     }
+##'     \item TERM99: "character" with 8 unique values and 0 NA values.
+##'     \tabular{rrrrrrrr}{
+##'     \strong{""} \tab \strong{1} \tab \strong{2} \tab \strong{BROKEN} \tab \strong{BROWSED} \tab \strong{DEAD} \tab \strong{HEALTHY} \tab \strong{NO DOMIN}\cr
+##'     1118 \tab 235 \tab 70 \tab 279 \tab 1 \tab 810 \tab 5394 \tab 494
+##'     }
+##'     \item E99: "double" variable with 87 unique values in the range [0.09, 28.7], 4482 NA values.
+##'     \item E98: "double" variable with 71 unique values in the range [0.07, 26.2], 4521 NA values.
+##'     \item E97: "double" variable with 76 unique values in the range [0.4, 21.5], 4602 NA values.
+##'     \item YR: "double" variable with 108 unique values in the range [1892, 1998], 44 NA values.
+##'     \item RWIDTH: "double" variable with 7059 unique values in the range [0.009, 4.111], 44 NA values.
+##'     \item AGE: "double" variable with 108 unique values in the range [1, 107], 44 NA values.
+##'     \item RCNT: "double" variable with 78 unique values in the range [4, 103], 44 NA values.
+##'     \item AGECL: "character" with 4 unique values and 0 NA values.
+##'     \tabular{rrrr}{
+##'     \strong{""} \tab \strong{1 <10} \tab \strong{2 10~40} \tab \strong{3 >40}\cr
+##'     44 \tab 148 \tab 3773 \tab 4436
+##'     }
+##'     \item notes: "character" with 25 unique values and 0 NA values.
+##'     \item T1: "double" variable with 11 unique values in the range [250, 1150], 85 NA values.
+##'     \item T2: "double" variable with 11 unique values in the range [250, 1150], 85 NA values.
+##'     \item T3: "double" variable with 11 unique values in the range [250, 1150], 85 NA values.
+##'     \item T4: "double" variable with 10 unique values in the range [250, 1050], 85 NA values.
+##'     \item T5: "double" variable with 11 unique values in the range [250, 1150], 85 NA values.
+##'     \item cht00: "double" variable with 25 unique values in the range [290, 1130], 85 NA values.
+##' }
+"firmasv_raw"

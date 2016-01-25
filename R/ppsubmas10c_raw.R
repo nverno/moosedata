@@ -1,0 +1,60 @@
+##' ppsubmas10c_raw
+##'
+##' @format An object of class \code{data.table} (inherits from
+##'   \code{data.frame}) with 691 rows and 41 columns.
+##' \itemize {
+##'     \item PPLOT: "double" variable with 24 unique values in the range [4, 27], 0 NA values.
+##'     \item SPLOT: "double" variable with 4 unique values in the range [1, 4], 0 NA values.
+##'     \item CENS: "double" variable with 4 unique values in the range [1986, 2010], 0 NA values.
+##'     \item BQUDX: "double" variable with 10 unique values in the range [0, 10], 0 NA values.
+##'     \item BQUDY: "double" variable with 8 unique values in the range [1, 10], 0 NA values.
+##'     \item RCK: "double" variable with 14 unique values in the range [0, 30], 0 NA values.
+##'     \item BSOIL: "double" variable with 8 unique values in the range [0, 50], 0 NA values.
+##'     \item WATER: "double" variable with 1 unique values in the range [0, 0], 0 NA values.
+##'     \item MSSG: "double" variable with 49 unique values in the range [0, 100], 0 NA values.
+##'     \item LITT: "double" variable with 162 unique values in the range [0, 100], 0 NA values.
+##'     \item BLA5: "double" variable with 17 unique values in the range [0, 30], 0 NA values.
+##'     \item BLD5: "double" variable with 13 unique values in the range [0, 25], 0 NA values.
+##'     \item TIPA: "double" variable with 7 unique values in the range [0, 30], 0 NA values.
+##'     \item TIPN: "double" variable with 3 unique values in the range [0, 1], 550 NA values.
+##'     \item STPA: "double" variable with 12 unique values in the range [0, 25], 0 NA values.
+##'     \item STPN: "double" variable with 4 unique values in the range [0, 2], 550 NA values.
+##'     \item WDG5: "double" variable with 21 unique values in the range [0, 65], 298 NA values.
+##'     \item WDA5: "double" variable with 21 unique values in the range [0, 65], 298 NA values.
+##'     \item MSWDA1: "double" variable with 13 unique values in the range [0, 20], 393 NA values.
+##'     \item WDG1: "double" variable with 16 unique values in the range [0, 20], 393 NA values.
+##'     \item WDA1: "double" variable with 20 unique values in the range [0, 60], 393 NA values.
+##'     \item DATE: 
+##'     \item LITM: "double" variable with 44 unique values in the range [0, 100], 439 NA values.
+##'     \item LITD: "double" variable with 22 unique values in the range [0, 100], 439 NA values.
+##'     \item LITC: "double" variable with 31 unique values in the range [0, 97], 439 NA values.
+##'     \item LITMRCK: "double" variable with 5 unique values in the range [0, 60], 439 NA values.
+##'     \item LITCRCK: "double" variable with 3 unique values in the range [0, 70], 439 NA values.
+##'     \item LITCWDG5: "double" variable with 3 unique values in the range [0, 5], 439 NA values.
+##'     \item MSBLA5: "double" variable with 8 unique values in the range [0, 30], 439 NA values.
+##'     \item MSRCK: "double" variable with 29 unique values in the range [0, 100], 439 NA values.
+##'     \item MSTIP: "double" variable with 5 unique values in the range [0, 90], 439 NA values.
+##'     \item MSSTP: "double" variable with 4 unique values in the range [0, 20], 439 NA values.
+##'     \item MSWDG5: "double" variable with 16 unique values in the range [0, 95], 439 NA values.
+##'     \item MSWDA5: "double" variable with 6 unique values in the range [0, 20], 439 NA values.
+##'     \item ASPCL: "character" with 2 unique values and 0 NA values.
+##'     \tabular{rr}{
+##'     \strong{E} \tab \strong{W}\cr
+##'     444 \tab 247
+##'     }
+##'     \item ELEVCL: "character" with 3 unique values and 0 NA values.
+##'     \tabular{rrr}{
+##'     \strong{H} \tab \strong{L} \tab \strong{M}\cr
+##'     172 \tab 201 \tab 318
+##'     }
+##'     \item SOILCL: "character" with 2 unique values and 0 NA values.
+##'     \tabular{rr}{
+##'     \strong{H} \tab \strong{S}\cr
+##'     334 \tab 357
+##'     }
+##'     \item SUMG: "double" variable with 70 unique values in the range [37, 150], 0 NA values.
+##'     \item SUMA: "double" variable with 76 unique values in the range [63.5, 199.5], 0 NA values.
+##'     \item correct: "double" variable with 3 unique values in the range [1, 2], 270 NA values.
+##'     \item SUMGC: "double" variable with 4 unique values in the range [100, 105], 251 NA values.
+##' }
+"ppsubmas10c_raw"

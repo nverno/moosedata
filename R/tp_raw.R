@@ -1,0 +1,222 @@
+##' Transect data collected at Mt. Moosilauke in the White Mountains of
+##' New Hampshire.
+##'
+##' @format An object of class \code{data.table} (inherits from
+##'   \code{data.frame}) with 7652 rows and 94 columns.
+##' \itemize {
+##'     \item TRAN: "character" with 11 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrrr}{
+##'     \strong{E320} \tab \strong{E330} \tab \strong{E334} \tab \strong{E335} \tab \strong{N326} \tab \strong{S26} \tab \strong{S344} \tab \strong{W32} \tab \strong{W46} \tab \strong{W60} \tab \strong{W70}\cr
+##'     798 \tab 677 \tab 805 \tab 802 \tab 401 \tab 213 \tab 652 \tab 890 \tab 882 \tab 693 \tab 839
+##'     }
+##'     \item TPLOT: "double" variable with 30 unique values in the range [-6, 24], 0 NA values.
+##'     \item TAG: "double" variable with 3186 unique values in the range [1, 995002], 5 NA values.
+##'     \item SPEC: "character" with 16 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrrrrrrrr}{
+##'     \strong{""} \tab \strong{ABBA} \tab \strong{ACPE} \tab \strong{ACSA} \tab \strong{ACSP} \tab \strong{BEAL} \tab \strong{BECO} \tab \strong{BEPA} \tab \strong{BESPP} \tab \strong{FAGR} \tab \strong{PIRU} \tab \strong{PRPE} \tab \strong{SOAM} \tab \strong{UNCO} \tab \strong{UNDE} \tab \strong{UNID}\cr
+##'     7 \tab 5555 \tab 55 \tab 181 \tab 28 \tab 121 \tab 1073 \tab 2 \tab 2 \tab 40 \tab 297 \tab 48 \tab 201 \tab 26 \tab 4 \tab 12
+##'     }
+##'     \item YRTAG: "double" variable with 6 unique values in the range [1987, 2011], 4 NA values.
+##'     \item YRREC: "double" variable with 4 unique values in the range [1998, 2011], 6272 NA values.
+##'     \item STAT87: "character" with 3 unique values and 0 NA values.
+##'     \tabular{rrr}{
+##'     \strong{""} \tab \strong{ALIVE} \tab \strong{DEAD}\cr
+##'     4170 \tab 3075 \tab 407
+##'     }
+##'     \item STAT98: "character" with 6 unique values and 0 NA values.
+##'     \tabular{rrrrrr}{
+##'     \strong{""} \tab \strong{ALIVE} \tab \strong{CUT} \tab \strong{DEAD} \tab \strong{MD} \tab \strong{NF}\cr
+##'     3733 \tab 2949 \tab 6 \tab 909 \tab 2 \tab 53
+##'     }
+##'     \item STAT99: "character" with 3 unique values and 0 NA values.
+##'     \tabular{rrr}{
+##'     \strong{""} \tab \strong{ALIVE} \tab \strong{DEAD}\cr
+##'     4897 \tab 2453 \tab 302
+##'     }
+##'     \item STAT00: "character" with 5 unique values and 0 NA values.
+##'     \tabular{rrrrr}{
+##'     \strong{""} \tab \strong{ALIVE} \tab \strong{DEAD} \tab \strong{MD} \tab \strong{NF}\cr
+##'     5660 \tab 1760 \tab 220 \tab 8 \tab 4
+##'     }
+##'     \item STAT10: "character" with 5 unique values and 0 NA values.
+##'     \tabular{rrrrr}{
+##'     \strong{""} \tab \strong{ALIVE} \tab \strong{DEAD} \tab \strong{MD} \tab \strong{NF}\cr
+##'     3422 \tab 3019 \tab 1125 \tab 7 \tab 79
+##'     }
+##'     \item STAT11: "character" with 7 unique values and 0 NA values.
+##'     \tabular{rrrrrrr}{
+##'     \strong{""} \tab \strong{ALIVE} \tab \strong{DEAD} \tab \strong{MD} \tab \strong{NF} \tab \strong{PD} \tab \strong{PF}\cr
+##'     4843 \tab 1894 \tab 739 \tab 10 \tab 148 \tab 11 \tab 7
+##'     }
+##'     \item YRDERC: "double" variable with 7 unique values in the range [1987, 2011], 5082 NA values.
+##'     \item DBH87: "double" variable with 269 unique values in the range [5, 60.5], 4188 NA values.
+##'     \item DECW87: "double" variable with 6 unique values in the range [1, 5], 7139 NA values.
+##'     \item DECM87: "double" variable with 6 unique values in the range [1, 5], 7100 NA values.
+##'     \item CPOS87: "character" with 5 unique values and 0 NA values.
+##'     \tabular{rrrrr}{
+##'     \strong{""} \tab \strong{c} \tab \strong{d} \tab \strong{i} \tab \strong{o}\cr
+##'     7449 \tab 87 \tab 14 \tab 59 \tab 43
+##'     }
+##'     \item DBH98: "double" variable with 267 unique values in the range [4.8, 60.6], 4724 NA values.
+##'     \item NOTE98: "character" with 43 unique values and 0 NA values.
+##'     \item DBH99: "double" variable with 418 unique values in the range [0.45, 60.6], 5206 NA values.
+##'     \item DAH99: "double" variable with 251 unique values in the range [1.15, 33.4], 6781 NA values.
+##'     \item HTCL99: "character" with 11 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrrr}{
+##'     \strong{""} \tab \strong{1-1.5} \tab \strong{1.5-2} \tab \strong{2-3} \tab \strong{3-4} \tab \strong{4-5} \tab \strong{5-6} \tab \strong{6-7} \tab \strong{7-8} \tab \strong{8-9} \tab \strong{9-}\cr
+##'     5842 \tab 277 \tab 195 \tab 361 \tab 352 \tab 343 \tab 171 \tab 53 \tab 28 \tab 16 \tab 14
+##'     }
+##'     \item HT99: "double" variable with 856 unique values in the range [1.25, 21.516], 4939 NA values.
+##'     \item COND99: "character" with 6 unique values and 0 NA values.
+##'     \tabular{rrrrrr}{
+##'     \strong{""} \tab \strong{FO} \tab \strong{LN} \tab \strong{SD} \tab \strong{SN} \tab \strong{TD}\cr
+##'     7316 \tab 12 \tab 36 \tab 178 \tab 109 \tab 1
+##'     }
+##'     \item CII00: "double" variable with 8 unique values in the range [1, 5], 5904 NA values.
+##'     \item NOTE00: "character" with 3 unique values and 0 NA values.
+##'     \tabular{rrr}{
+##'     \strong{""} \tab \strong{CA} \tab \strong{PTG}\cr
+##'     7632 \tab 2 \tab 18
+##'     }
+##'     \item DBH10: "double" variable with 339 unique values in the range [5, 61.7], 4637 NA values.
+##'     \item NOTE10: "character" with 10 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrr}{
+##'     \strong{""} \tab \strong{CA} \tab \strong{NYR} \tab \strong{PTG} \tab \strong{RL311} \tab \strong{RL518} \tab \strong{RL893} \tab \strong{RL98205} \tab \strong{RL98476} \tab \strong{RL990397}\cr
+##'     7623 \tab 17 \tab 1 \tab 5 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1 \tab 1
+##'     }
+##'     \item DBH11: "double" variable with 280 unique values in the range [0.4, 45], 5991 NA values.
+##'     \item DAH11: "double" variable with 71 unique values in the range [1.2, 20.2], 7272 NA values.
+##'     \item HTCL11: "character" with 29 unique values and 0 NA values.
+##'     \item HT11: "double" variable with 357 unique values in the range [0.25, 17.972], 5747 NA values.
+##'     \item SNHT11: "character" with 20 unique values and 0 NA values.
+##'     \item COND11: "character" with 10 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrr}{
+##'     \strong{""} \tab \strong{H} \tab \strong{LN} \tab \strong{NF} \tab \strong{NS} \tab \strong{SD} \tab \strong{SN} \tab \strong{ST} \tab \strong{TI} \tab \strong{UH}\cr
+##'     5111 \tab 1703 \tab 64 \tab 3 \tab 2 \tab 367 \tab 272 \tab 1 \tab 23 \tab 106
+##'     }
+##'     \item CII11: "double" variable with 8 unique values in the range [1, 5], 6092 NA values.
+##'     \item NOTE11: "character" with 282 unique values and 0 NA values.
+##'     \item HR: "double" variable with 25 unique values in the range [1, 12.5], 5170 NA values.
+##'     \item DIST: "double" variable with 263 unique values in the range [0, 7], 4796 NA values.
+##'     \item WTAZ: "double" variable with 259 unique values in the range [1.26, 368], 7185 NA values.
+##'     \item WITN: "double" variable with 2 unique values in the range [1, 1], 7183 NA values.
+##'     \item ELEVCL: "character" with 6 unique values and 0 NA values.
+##'     \tabular{rrrrrr}{
+##'     \strong{""} \tab \strong{H} \tab \strong{HH} \tab \strong{L} \tab \strong{LL} \tab \strong{M}\cr
+##'     13 \tab 2394 \tab 2278 \tab 1042 \tab 368 \tab 1557
+##'     }
+##'     \item ASPCL: "character" with 5 unique values and 0 NA values.
+##'     \tabular{rrrrr}{
+##'     \strong{""} \tab \strong{E} \tab \strong{N} \tab \strong{S} \tab \strong{W}\cr
+##'     4 \tab 3082 \tab 401 \tab 861 \tab 3304
+##'     }
+##'     \item SLOPE87: "double" variable with 61 unique values in the range [8, 92], 3139 NA values.
+##'     \item MICR: "character" with 4 unique values and 0 NA values.
+##'     \tabular{rrrr}{
+##'     \strong{""} \tab \strong{CONC} \tab \strong{CONV} \tab \strong{PLAN}\cr
+##'     3140 \tab 374 \tab 556 \tab 3582
+##'     }
+##'     \item CLASS: "character" with 2 unique values and 0 NA values.
+##'     \tabular{rr}{
+##'     \strong{""} \tab \strong{T}\cr
+##'     4 \tab 7648
+##'     }
+##'     \item CODE98A: "character" with 46 unique values and 0 NA values.
+##'     \item PISAP87: "double" variable with 18 unique values in the range [0, 40], 3173 NA values.
+##'     \item HRB87: "double" variable with 24 unique values in the range [5, 95], 3140 NA values.
+##'     \item HRB1_87: "character" with 7 unique values and 0 NA values.
+##'     \tabular{rrrrrrr}{
+##'     \strong{""} \tab \strong{ASSPP} \tab \strong{CASPP} \tab \strong{DRSP/DRIN} \tab \strong{LYLU} \tab \strong{MOSS} \tab \strong{OXMO}\cr
+##'     3140 \tab 24 \tab 52 \tab 959 \tab 164 \tab 2218 \tab 1095
+##'     }
+##'     \item HRB2_87: "character" with 11 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrrr}{
+##'     \strong{""} \tab \strong{ASSPP} \tab \strong{CASPP} \tab \strong{CLBO} \tab \strong{COGR} \tab \strong{DRSP/DRIN} \tab \strong{LYLU} \tab \strong{MOSS} \tab \strong{OXMO} \tab \strong{SOSPP} \tab \strong{TRBO}\cr
+##'     3305 \tab 161 \tab 39 \tab 321 \tab 52 \tab 1557 \tab 96 \tab 490 \tab 1527 \tab 45 \tab 59
+##'     }
+##'     \item HRB3_87: "character" with 14 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrrrrrr}{
+##'     \strong{""} \tab \strong{ARNU} \tab \strong{ASSPP} \tab \strong{CASPP} \tab \strong{CLBO} \tab \strong{COCA} \tab \strong{COGR} \tab \strong{DRSP/DRIN} \tab \strong{EUER} \tab \strong{LYLU} \tab \strong{MOSS} \tab \strong{OXMO} \tab \strong{SOSPP} \tab \strong{TRBO}\cr
+##'     3814 \tab 99 \tab 381 \tab 28 \tab 630 \tab 53 \tab 65 \tab 1034 \tab 34 \tab 184 \tab 446 \tab 749 \tab 54 \tab 81
+##'     }
+##'     \item SHRB1_87: "character" with 8 unique values and 0 NA values.
+##'     \tabular{rrrrrrrr}{
+##'     \strong{""} \tab \strong{ACPE} \tab \strong{ACSA} \tab \strong{RIGL} \tab \strong{RUSPP} \tab \strong{SACA} \tab \strong{SAPU} \tab \strong{VIAL}\cr
+##'     5448 \tab 44 \tab 1557 \tab 84 \tab 159 \tab 121 \tab 36 \tab 203
+##'     }
+##'     \item SHRB2_87: "character" with 8 unique values and 0 NA values.
+##'     \tabular{rrrrrrrr}{
+##'     \strong{""} \tab \strong{ACPE} \tab \strong{ACSA} \tab \strong{RIGL} \tab \strong{RUSPP} \tab \strong{SACA} \tab \strong{SAPU} \tab \strong{VIAL}\cr
+##'     6540 \tab 165 \tab 305 \tab 54 \tab 96 \tab 91 \tab 262 \tab 139
+##'     }
+##'     \item SHRB3_87: "character" with 8 unique values and 0 NA values.
+##'     \tabular{rrrrrrrr}{
+##'     \strong{""} \tab \strong{ACPE} \tab \strong{ACSA} \tab \strong{RIGL} \tab \strong{RUSPP} \tab \strong{SACA} \tab \strong{SAPU} \tab \strong{VIAL}\cr
+##'     7140 \tab 179 \tab 49 \tab 128 \tab 68 \tab 10 \tab 33 \tab 45
+##'     }
+##'     \item SLOPE10_D: "double" variable with 27 unique values in the range [5, 40], 6050 NA values.
+##'     \item SLOPE10_P: "double" variable with 36 unique values in the range [9, 84], 5952 NA values.
+##'     \item CODE98B: "character" with 3 unique values and 0 NA values.
+##'     \tabular{rrr}{
+##'     \strong{""} \tab \strong{a} \tab \strong{b}\cr
+##'     7311 \tab 338 \tab 3
+##'     }
+##'     \item ASP: "double" variable with 150 unique values in the range [12, 342], 19 NA values.
+##'     \item ELEV: "double" variable with 165 unique values in the range [655, 1400], 4 NA values.
+##'     \item SOILOLD: "character" with 3 unique values and 0 NA values.
+##'     \tabular{rrr}{
+##'     \strong{""} \tab \strong{H} \tab \strong{S}\cr
+##'     3131 \tab 3613 \tab 908
+##'     }
+##'     \item SLOPE99: "double" variable with 44 unique values in the range [0, 81], 4525 NA values.
+##'     \item TRAD: "double" variable with 3 unique values in the range [4, 5], 4 NA values.
+##'     \item TRAD11: "double" variable with 3 unique values in the range [4, 5], 4 NA values.
+##'     \item ABSRAD: "double" variable with 6 unique values in the range [1.5, 5], 5333 NA values.
+##'     \item ABSRAD11: "double" variable with 7 unique values in the range [1.5, 5], 5333 NA values.
+##'     \item slope11_d: "double" variable with 16 unique values in the range [10, 32], 6157 NA values.
+##'     \item asp11: "double" variable with 24 unique values in the range [54, 293], 6244 NA values.
+##'     \item elev_ft11: "double" variable with 21 unique values in the range [4094, 4506], 6447 NA values.
+##'     \item elev_m11: "double" variable with 15 unique values in the range [1232.8, 1357], 6848 NA values.
+##'     \item EDBH99: "double" variable with 3 unique values in the range [1, 2], 7565 NA values.
+##'     \item EDBH11: "double" variable with 3 unique values in the range [1, 2], 7512 NA values.
+##'     \item FORM99: "character" with 3 unique values and 0 NA values.
+##'     \tabular{rrr}{
+##'     \strong{""} \tab \strong{sap} \tab \strong{tree}\cr
+##'     4490 \tab 1114 \tab 2048
+##'     }
+##'     \item FORM11: "character" with 3 unique values and 0 NA values.
+##'     \tabular{rrr}{
+##'     \strong{""} \tab \strong{sap} \tab \strong{tree}\cr
+##'     4706 \tab 704 \tab 2242
+##'     }
+##'     \item soilcl: "character" with 4 unique values and 0 NA values.
+##'     \tabular{rrrr}{
+##'     \strong{""} \tab \strong{H} \tab \strong{I} \tab \strong{S}\cr
+##'     263 \tab 5942 \tab 447 \tab 1000
+##'     }
+##'     \item TECH: "character" with 14 unique values and 0 NA values.
+##'     \tabular{rrrrrrrrrrrrrr}{
+##'     \strong{""} \tab \strong{ABL} \tab \strong{ABL AG} \tab \strong{ABL CWB} \tab \strong{ABL SS} \tab \strong{AG} \tab \strong{AG CWB} \tab \strong{AG PAP} \tab \strong{AG SS} \tab \strong{CWB} \tab \strong{CWB SS} \tab \strong{NOAH} \tab \strong{NOAH PAP} \tab \strong{SS}\cr
+##'     5505 \tab 319 \tab 236 \tab 296 \tab 37 \tab 454 \tab 207 \tab 49 \tab 50 \tab 158 \tab 72 \tab 114 \tab 71 \tab 84
+##'     }
+##'     \item AVEELEV: "double" variable with 202 unique values in the range [611.1, 1385.495], 0 NA values.
+##'     \item HT87N: "double" variable with 3049 unique values in the range [3.972, 18.814], 4191 NA values.
+##'     \item HT98N: "double" variable with 2605 unique values in the range [3.998, 17.817], 4724 NA values.
+##'     \item HT99N: "double" variable with 2104 unique values in the range [1.562, 21.516], 5219 NA values.
+##'     \item HT10N: "double" variable with 2728 unique values in the range [3.422, 22.631], 4638 NA values.
+##'     \item HT11N: "double" variable with 1488 unique values in the range [1.533, 17.972], 5991 NA values.
+##'     \item EBV87: "double" variable with 2974 unique values in the range [0.004, 2.269], 4191 NA values.
+##'     \item EBV98: "double" variable with 2548 unique values in the range [0.004, 2.355], 4724 NA values.
+##'     \item EBV99: "double" variable with 2029 unique values in the range [0, 2.528], 5244 NA values.
+##'     \item EBV10: "double" variable with 2680 unique values in the range [0.003, 2.997], 4638 NA values.
+##'     \item EBV11: "double" variable with 1448 unique values in the range [0, 1.256], 5991 NA values.
+##'     \item HT87: "double" variable with 3049 unique values in the range [3.972, 18.814], 4191 NA values.
+##'     \item EHT87: "double" variable with 1 unique values in the range [1, 1], 0 NA values.
+##'     \item HT98: "double" variable with 2605 unique values in the range [3.998, 17.817], 4724 NA values.
+##'     \item EHT98: "double" variable with 1 unique values in the range [1, 1], 0 NA values.
+##'     \item HT10: "double" variable with 2728 unique values in the range [3.422, 22.631], 4638 NA values.
+##'     \item EHT10: "double" variable with 1 unique values in the range [1, 1], 0 NA values.
+##'     \item EHT99: "double" variable with 2 unique values in the range [1, 1], 1796 NA values.
+##'     \item EHT11: "double" variable with 2 unique values in the range [1, 1], 1564 NA values.
+##' }
+"tp_raw"
