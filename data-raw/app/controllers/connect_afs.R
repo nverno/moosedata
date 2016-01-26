@@ -3,16 +3,28 @@
 ## Description: Connect to AFS
 ## Author: Noah Peart
 ## Created: Mon Jan 25 14:48:43 2016 (-0500)
-## Last-Updated: Mon Jan 25 15:09:18 2016 (-0500)
+## Last-Updated: Tue Jan 26 01:36:42 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 ## Prefix: 'afs'
+observeEvent(input$afsSubmit, {
+    res <- afs_submit(input$afsUser, input$afsPasswd, input$afsCell)
+    if (res) {
+        txt <- afs_tokens_table()
+        session$sendCustomMessage(
+            type='update-elem', 
+            message=list(id='afsTokens', text=txt)
+        )
+    } else {
+        session$sendCustomMessage(type='update-elem', 
+                                  message=list(id='afsTokens',
+                                               text='Login failure'))
+    }
+})
 
-afsUI <- tagList(
-    bsModal('afs', 'Connect to AFS', trigger='afsBtn',
-            helpText('Sign in to AFS (requires klog installed locally).')
-            textInput('afsName', 'Username:', value=''),
-            textInput('afsPasswd', 'Password:', value=''),
-            textInput('afsCell', 'Cell:', value='northstar.dartmouth.edu',
-                      placeholder = 'northstar.dartmouth.edu'))
-)
+output$afsResponse <- renderPrint({
+    input$afsSubmit
+    isolate({
+        afs_cache$tokens %||% afs_cache$error %||% ''
+    })
+})

@@ -3,13 +3,14 @@
 ## Description: 
 ## Author: Noah Peart
 ## Created: Sat Jan 23 14:47:08 2016 (-0500)
-## Last-Updated: Mon Jan 25 18:04:09 2016 (-0500)
+## Last-Updated: Tue Jan 26 01:00:08 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 source("utils.R")
 
 ## General
 library(data.table)
+library(formattable)
 
 ## Shiny
 library(shiny)
@@ -30,14 +31,16 @@ sources <- list(controls='controllers', uis='partials')
 ################################################################################
 ## nverno/sync.afs
 if (!exists('dkey')) dkey <- copy(sync.afs::data_key)
-if (!exists('path')) path <- sync.afs::get_afs()
-pp_raw <- sync.afs::get_data('pp_raw', path, dkey)
-pp_demslope <- sync.afs::get_data('pp_demslope', path, dkey)
-setnames(pp_raw, names(pp_raw), toupper(names(pp_raw)))
-setnames(pp_demslope, names(pp_demslope), toupper(names(pp_demslope)))
+afs_update_cache()
+
+## if (!exists('path')) path <- sync.afs::get_afs()
+## pp_raw <- sync.afs::get_data('pp_raw', path, dkey)
+## pp_demslope <- sync.afs::get_data('pp_demslope', path, dkey)
+## setnames(pp_raw, names(pp_raw), toupper(names(pp_raw)))
+## setnames(pp_demslope, names(pp_demslope), toupper(names(pp_demslope)))
 
 ## Not interested in spruce ears here: keep regular and met data
-pp_raw <- pp_raw[CLASS %in% c('P', 'M'), ]
+## pp_raw <- pp_raw[CLASS %in% c('P', 'M'), ]
 
 ## Plot-level variables
 ## From pp_demslope (all)

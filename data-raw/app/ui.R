@@ -3,11 +3,9 @@
 ## Description: 
 ## Author: Noah Peart
 ## Created: Sat Jan 23 14:46:58 2016 (-0500)
-## Last-Updated: Mon Jan 25 15:11:30 2016 (-0500)
+## Last-Updated: Mon Jan 25 23:33:38 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
-library(shiny)
-library(shinydashboard)
 uiloc <- 'partials'
 
 shinyUI(
@@ -16,6 +14,7 @@ shinyUI(
         dashboardSidebar(
             sidebarSearchForm('srchText', buttonId = 'srchButton',
                               label='Search columns (regex)...'),
+            actionButton('afsBtn', 'Connect to AFS'),
             sidebarMenu(
                 menuItem('Single Variables', tabName='single', icon=icon('dashboard')),
                 menuItem('Tabulate', tabName='tabulate', icon=icon('th'))
@@ -23,6 +22,7 @@ shinyUI(
         ),
         dashboardBody(
             singleton(tags$head(tags$script(src='collapse-box.js'))),
+            singleton(tags$head(tags$script(src='update-elem.js'))),
             source(file.path(uiloc, 'search_ui.R'), local=TRUE)$value,
             source(file.path(uiloc, 'connect_afs_ui.R'), local=TRUE)$value,
             tabItems(
@@ -30,7 +30,8 @@ shinyUI(
                                          local=TRUE)$value),
                 tabItem('tabulate', source(file.path(uiloc, 'tabulate_ui.R'),
                                            local=TRUE)$value)
-            )
+            ),
+            source(file.path(uiloc, 'debug_ui.R'), local=TRUE)$value
         )
     )
 )
