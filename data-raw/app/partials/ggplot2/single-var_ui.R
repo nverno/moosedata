@@ -3,7 +3,7 @@
 ## Description: ggplot2 UI for single variable distributions
 ## Author: Noah Peart
 ## Created: Mon Jan 25 16:39:57 2016 (-0500)
-## Last-Updated: Mon Jan 25 18:03:35 2016 (-0500)
+## Last-Updated: Wed Jan 27 23:34:00 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 ## Prefix: 'single'
@@ -38,16 +38,20 @@ singleDistributions <- tagList(
             )
         ),
         
+        ## Controls: select data and choose variables
+        column(width=3,
+               singleData,
+               singleDistrControls
+               )
         ## Distribution controls
-        box(title='Input', 
-            background='black',
-            width=3,
-            selectInput('singleDistrVar', 'Variable', choices='None'),
-            checkboxInput('singleShowBins', 'Adjust bins', value=FALSE),
-            conditionalPanel(
-                condition= "input.singleShowBins == true",
-                sliderInput('singleBins', 'Approx. number of bins:', 
-                            value=30, min=0, max=100)
-            ))
+        ## box(title='Input', 
+        ##     background='black',
+        ##     width=3,
+        ##     selectInput('singleDistrVar', 'Variable', choices='None'),
+        ##     checkboxInput('singleShowBins', 'Adjust bins', value=FALSE),
+        ##     conditionalPanel(
+        ##         condition= "input.singleShowBins == true",
+        ##         sliderInput('singleBins', 'Approx. number of bins:', 
+        ##                     value=30, min=0, max=100)))
     )
 )

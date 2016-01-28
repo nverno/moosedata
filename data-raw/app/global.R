@@ -3,7 +3,7 @@
 ## Description: 
 ## Author: Noah Peart
 ## Created: Sat Jan 23 14:47:08 2016 (-0500)
-## Last-Updated: Tue Jan 26 01:00:08 2016 (-0500)
+## Last-Updated: Thu Jan 28 01:14:21 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 source("utils.R")
@@ -16,6 +16,7 @@ library(formattable)
 library(shiny)
 library(shinydashboard)
 library(shinyBS)
+library(sjs)  # 'nverno/sjs'
 
 ## Plotting
 library(plotly)
@@ -30,17 +31,12 @@ sources <- list(controls='controllers', uis='partials')
 ##
 ################################################################################
 ## nverno/sync.afs
-if (!exists('dkey')) dkey <- copy(sync.afs::data_key)
-afs_update_cache()
-
-## if (!exists('path')) path <- sync.afs::get_afs()
-## pp_raw <- sync.afs::get_data('pp_raw', path, dkey)
-## pp_demslope <- sync.afs::get_data('pp_demslope', path, dkey)
-## setnames(pp_raw, names(pp_raw), toupper(names(pp_raw)))
-## setnames(pp_demslope, names(pp_demslope), toupper(names(pp_demslope)))
-
-## Not interested in spruce ears here: keep regular and met data
-## pp_raw <- pp_raw[CLASS %in% c('P', 'M'), ]
+use_afs <- TRUE
+if (use_afs) {
+    if (!exists('dkey')) dkey <- copy(sync.afs::data_key)
+    afs_update_cache()
+    has_afs_utils <- afs_utils()
+}
 
 ## Plot-level variables
 ## From pp_demslope (all)
@@ -70,7 +66,7 @@ with_defaults <- function(x, defaults) {
 pars <- list(
     ## single variables
     single=list(
-        style = 'plotly' # 'plotly', 'ggplot2', 'ggvis'
+        style = 'plotly'
     ),
 
     ## Defaults for UI stuff

@@ -3,7 +3,7 @@
 ## Description: Summarise single variables
 ## Author: Noah Peart
 ## Created: Sat Jan 23 18:24:27 2016 (-0500)
-## Last-Updated: Mon Jan 25 18:53:54 2016 (-0500)
+## Last-Updated: Wed Jan 27 23:47:21 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 ## Prefix: 'single'
@@ -23,6 +23,18 @@ singleName <- eventReactive(input$singleDistrVar, {
 ##
 ################################################################################
 ## Update the variable choice when data changes
+## observeEvent(input$datGet, {
+##     if (is.null(allDat$afs)) return()
+##     updateSelectInput(session, inputId = 'singleData', 
+##                       choices=names(allDat$afs))
+## })
+
+## observeEvent(input$singleData, {
+##     if (input$singleData == 'None') return()
+##     updateSelectInput(session, inputId = 'singleDistrVar',
+##                       choices=names(allDat$afs[[input$singleData]]))
+## })
+
 observeEvent(dat(), {
     updateSelectInput(session, inputId = 'singleDistrVar',
                       choices=names(dat()))

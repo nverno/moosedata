@@ -3,7 +3,7 @@
 ## Description: 
 ## Author: Noah Peart
 ## Created: Sat Jan 23 20:37:49 2016 (-0500)
-## Last-Updated: Tue Jan 26 02:07:34 2016 (-0500)
+## Last-Updated: Wed Jan 27 23:08:23 2016 (-0500)
 ##           By: Noah Peart
 ######################################################################
 "%||%" <- function(a, b) if (is.null(a)) b else a
@@ -64,7 +64,12 @@ afs_tokens <- function() {
 }
 
 ##' logout of AFS
-afs_logout <- function() system2('unlog')
+afs_logout <- function() {
+    res <- system2('unlog')
+    afs_cache$tokens <- NULL
+    afs_cache$error <- NULL
+    invisible(res == 0L)
+}
 
 ##' Update the AFS token cache.  This could be either a new set of tokens, an error, or 
 ##' an initial check for tokens with the system.
