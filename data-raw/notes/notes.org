@@ -34,3 +34,20 @@ Ignore slopes until we know if they are percents or angles.
   
 * Missing
   - herb/shrub percent cover files (below HH, ie. permanent plots and segments)
+
+* Substrate Types
+  - Years:
+  Sampled in different years, different litter types (maybe not recording ON) 
+  first 1989, 1998, 1999 (seg/hh), hh in 2011
+  - Substrate prefixed SUB, SUBON is the substrate that it is on top of
+    
+  - Aggregation: Possibly revisit the details of the aggregation
+    - Ignored the SUBON[0-9]+ (ignored substrate that was underneath)
+    - Reasons from dropping variables: 
+      - low freq. of type/count of seedlings
+
+
+* Seedlings
+  - seesapmas11: seedling/saplings data from contours - with key to substrate type
+  - 
+
